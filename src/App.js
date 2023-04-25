@@ -1,7 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import TableView from "./components/TableView";
-import Cards from "./components/Cards";
+import CardView from "./components/CardView";
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <Sidebar />
       <Routes>
         <Route path="/" element={<TableView />} />
-        <Route path="/card" element={<Cards />} />
+        <Route path="/card" element={<CardView />} />
       </Routes>
     </Router>
   );

@@ -1,10 +1,12 @@
 import Box from "@mui/material/Box";
 import addressData from "../seed/data.json";
-import CardList from "./CardList";
+import BusinessCard from "./BusinessCard";
 import { Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useMemo } from "react";
-const Cards = () => {
+
+
+const CardView = () => {
   const isOpen = useSelector((state) => state.isOpen.isOpen);
   const serachQuery = useSelector((state) => state.search.search);
   const sortData = useSelector((state) => state.filter.filterText);
@@ -53,8 +55,8 @@ const Cards = () => {
       }}
     >
       {sortedResults.length ? (
-        sortedResults.map((item, index) => (
-          <CardList key={index} item={item} serachQuery={serachQuery} />
+        sortedResults.map((cardData, index) => (
+          <BusinessCard key={index} data={cardData} serachQuery={serachQuery} />
         ))
       ) : (
         <Typography
@@ -74,4 +76,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default CardView;

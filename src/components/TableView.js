@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import addressData from "../seed/data.json";
 import { Box } from "@mui/material";
 import { useSelector } from "react-redux";
-import { columns } from "./Data/columns";
+import { CONTACT_FIELDS } from "../constant";
 import { useState } from "react";
 
 let rows = [];
@@ -79,17 +79,17 @@ export default function TableView() {
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
-                  {columns.map((column) => (
+                  {CONTACT_FIELDS.map(({id, align, label, minWidth}) => (
                     <TableCell
-                      key={column.id}
-                      align={column.align}
+                      key={id}
+                      align={align}
                       style={{
-                        minWidth: column.minWidth,
+                        minWidth: minWidth,
                         fontWeight: "bold",
                         fontSize: "15px",
                       }}
                     >
-                      {column.label}
+                      {label}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -106,12 +106,12 @@ export default function TableView() {
                           tabIndex={-1}
                           key={row.code}
                         >
-                          {columns.map((column) => {
-                            const value = row[column.id];
+                          {CONTACT_FIELDS.map(({id, align, format}) => {
+                            const value = row[id];
                             return (
-                              <TableCell key={column.id} align={column.align}>
-                                {column.format && typeof value === "number"
-                                  ? column.format(value)
+                              <TableCell key={id} align={align}>
+                                {format && typeof value === "number"
+                                  ? format(value)
                                   : value}
                               </TableCell>
                             );
