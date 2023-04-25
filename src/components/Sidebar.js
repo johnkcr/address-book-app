@@ -38,6 +38,8 @@ import {
 } from "../redux/actions/filterAction";
 const drawerWidth = 240;
 const asc = "ASC";
+
+
 const Sidebar = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
